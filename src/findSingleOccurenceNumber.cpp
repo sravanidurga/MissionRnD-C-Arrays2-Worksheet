@@ -14,7 +14,25 @@ NOTES:
 There are better ways of solving the problem than a brute-force solution which is of O(n^2)
 complexity .
 */
-
+#include<stdio.h>
 int findSingleOccurenceNumber(int *A, int len) {
-	return -1;
+	int r = 0, x, s,i,j;
+	if (A==NULL || len<0)
+		return -1;
+	for (i = 0; i < 15; i++)
+	{
+		s = 0;
+		x = (1 << i);
+		for (j = 0; j < len; j++)
+		{
+			if (*(A + j)&x)
+				s++;
+		}
+		if (s % 3)
+			r |= x;
+
+	}
+	return r;
+	
+	
 }
